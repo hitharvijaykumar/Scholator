@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Background Image -->
+    <ImageView
+        android:id="@+id/background_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/welcome_bg"
+        android:scaleType="centerCrop"
+        android:alpha="0.3" />
+    <!-- Form Title -->
+    <TextView
+        android:id="@+id/form_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Scholarship Eligibility Form"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Name Input -->
+    <EditText
+        android:id="@+id/name_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Full Name"
+        android:inputType="textPersonName"
+        android:background="@drawable/rounded_bg"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/form_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Date of Birth Input -->
+    <EditText
+        android:id="@+id/dob_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Date of Birth (DD/MM/YYYY)"
+        android:inputType="date"
+        android:background="@drawable/rounded_bg"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/name_input"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- State Input -->
+    <EditText
+        android:id="@+id/state_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="State"
+        android:inputType="text"
+        android:background="@drawable/rounded_bg"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/dob_input"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Gender Dropdown -->
+    <Spinner
+        android:id="@+id/gender_spinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_bg"
+        android:padding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/state_input"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:entries="@array/gender_options" />
+
+    <!-- Caste Dropdown -->
+    <Spinner
+        android:id="@+id/caste_spinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_bg"
+        app:layout_constraintTop_toBottomOf="@id/gender_spinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:entries="@array/caste_categories" />
+
+    <!-- Disability Dropdown -->
+    <Spinner
+        android:id="@+id/disability_spinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_bg"
+        android:padding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/caste_spinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:entries="@array/disability_options" />
+
+    <!-- Family Income Input -->
+    <EditText
+        android:id="@+id/income_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Family Income (per annum)"
+        android:inputType="numberDecimal"
+        android:background="@drawable/rounded_bg"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/disability_spinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Program Applied For Input -->
+    <EditText
+        android:id="@+id/program_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Program Applied For"
+        android:inputType="text"
+        android:background="@drawable/rounded_bg"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/income_input"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Scholarship Amount Input -->
+
+    <!-- Submit Button -->
+    <EditText
+        android:id="@+id/amount_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/rounded_bg"
+        android:hint="Scholarship Amount Requested"
+        android:inputType="numberDecimal"
+        android:padding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/program_input" />
+
+    <Button
+        android:id="@+id/submit_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Check Eligibility"
+        android:backgroundTint="@color/primary_color"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/amount_input"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
+
+    <!-- Bottom Navigation -->
+    <LinearLayout
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/nav_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/home_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/home_icon"
+            android:layout_weight="1"
+            android:contentDescription="Home" />
+
+        <ImageView
+            android:id="@+id/scholarship_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/scholarship_icon"
+            android:layout_weight="1"
+            android:contentDescription="Scholarships" />
+
+        <ImageView
+            android:id="@+id/profile_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/profile_icon"
+            android:layout_weight="1"
+            android:contentDescription="Profile" />
+
+        <ImageView
+            android:id="@+id/settings_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/settings_icon"
+            android:layout_weight="1"
+            android:contentDescription="Settings" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

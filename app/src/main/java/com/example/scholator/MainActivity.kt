@@ -2,64 +2,73 @@ package com.example.scholator
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import android.widget.Toast
 import androidx.activity.ComponentActivity
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.platform.LocalContext
 import com.example.scholator.ui.theme.ScholatorTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
 
-        // Set the UI content here
+        // Set the UI content
         setContent {
             ScholatorTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-
-                    // Replace this with your actual layout code for the login page
-
-                    // Assuming you have buttons with IDs "login" and "signup" in your layout XML
-                    val loginButton = findViewById<Button>(R.id.login)
-                    val signupButton = findViewById<Button>(R.id.signup)
-
-                    // Action for Login Button (navigate to SecondActivity)
-                    loginButton.setOnClickListener {
-                        val intent = Intent(this@MainActivity, SecondActivity::class.java)
-                        startActivity(intent)
-                    }
-
-                    // Action for Sign Up Button (show a toast message)
-                    signupButton.setOnClickListener {
-                        Toast.makeText(this@MainActivity, "Sign Up Done", Toast.LENGTH_SHORT).show()
-                    }
-                }
+                MainScreen()
             }
         }
     }
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun MainScreen() {
+    val context = LocalContext.current // Get the context for Intent and Toast
+
+    // Scaffold provides structure for the screen, allowing for padding and other common UI components
+    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+        Column(
+            modifier = Modifier
+                .padding(innerPadding)
+                .fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            // Login Button
+            Button(onClick = {
+                // Navigate to SecondActivity
+                val intent = Intent(context, SecondActivity::class.java)
+                context.startActivity(intent)
+            }) {
+                Text("Login")
+            }
+
+            Spacer(modifier = Modifier.height(16.dp)) // Space between buttons
+
+            // Sign Up Button
+            Button(onClick = {
+                // Show a toast for Sign Up action
+                Toast.makeText(context, "Sign Up Done", Toast.LENGTH_SHORT).show()
+            }) {
+                Text("Sign Up")
+            }
+        }
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun MainScreenPreview() {
     ScholatorTheme {
-        Greeting("Android")
+        MainScreen()
     }
 }
